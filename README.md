@@ -1,31 +1,37 @@
 # Quantum Learning Qubits App
 
-Welcome to the **Quantum Learning Qubits App** — an AI-powered, interactive app designed to teach children quantum mechanics and qubits through engaging simulations and activities.
+This repository contains an offline-first Progressive Web App (PWA) that teaches kids basic quantum concepts (qubits, superposition, entanglement) with lessons, quizzes, and a simple AI tutor. All learning data and user progress are stored locally using IndexedDB so the app works offline on a single device (your phone).
 
-## Features
-- **Cross-platform Functionality:** Works seamlessly in browsers, including on iPhone, with no need for Xcode or additional software.
-- **Interactive Quantum Simulations:** Explore concepts like superposition and entanglement with visual tools.
-- **AI Quantum Tutor:** A friendly AI chatbot to interactively explain quantum concepts and solve related problems.
-- **Free and Open Source:** No accounts, subscriptions, or hardware requirements — accessible for everyone.
+How to use this app on a single phone (offline-ready):
 
-## Goals
-1. Make quantum mechanics approachable and fun for kids.
-2. Build an open-source platform to encourage educational contributions.
-3. Ensure accessibility across devices with no barriers.
+1. Enable GitHub Pages for this repository (Settings → Pages → Source: main branch) so the app is hosted at `https://<your-username>.github.io/kids-Qubits-w-AI`.
+2. Open the published site in your phone browser while online.
+3. Add to Home Screen (Install) so the PWA is available offline. The service worker will precache lessons and assets.
 
-## How to Use
-- **Visit:** Open the app in your browser.
-- **Explore:** Use the quantum simulation tools to experiment with qubits.
-- **Learn:** Ask the AI tutor questions about quantum mechanics and participate in quizzes.
+If you prefer to run locally on the phone (developer mode or using a local server app):
 
-## How to Contribute
-1. Fork this repository.
-2. Clone the repository to your local device.
-3. Make changes or add features.
-4. Submit a Pull Request for review.
+- Start a static server in the project folder (e.g., `python3 -m http.server 3000` or `http-server -p 3000`).
+- Visit `http://localhost:3000` or `https://localhost:3000` if you configure SSL.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
+Offline behavior:
+- Lessons are seeded from `data/lessons.json` on first load and stored in IndexedDB.
+- User progress and Q&A logs are stored locally in IndexedDB.
+- You can export progress to a JSON file and import it back on the same device.
 
----
-Developed for the community, by the community. Together, we make learning quantum mechanics fun and accessible!
+Files added/updated:
+- index.html — main UI
+- styles.css — styles
+- app.js — app bootstrap + SW registration + DB seeding
+- service-worker.js — precache and offline fallback
+- data/lessons.json — bundled lessons and quizzes
+- scripts/db.js — IndexedDB wrapper
+- scripts/lessonsUI.js — lesson/quiz UI
+- scripts/aiTutor.js — enhanced AI tutor using local lessons
+- scripts/sync.js — export/import helpers
+- assets/* — icons
+
+Notes and limitations:
+- For full PWA install and service worker support, use a secure context (HTTPS) or GitHub Pages.
+- iOS Safari has limitations: service worker support requires HTTPS and some behaviors vary. Installing via 'Add to Home Screen' after visiting over HTTPS is recommended.
+
+If you want automatic remote sync, provide a server API URL and I can add optional background sync. For now, the app is fully functional offline and all files have been added to this repository.

@@ -1,14 +1,24 @@
-function askAIQuestion() {
-  const question = document.getElementById('ai-question').value;
-  let response;
+// Enhanced AI tutor using local lesson data and logging
+async function askAIQuestion() {
+  const questionEl = document.getElementById('ai-question');
+  const responseEl = document.getElementById('ai-response');
+  const question = questionEl.value.trim();
+  if (!question) return;
+
+  // Simple keyword-based responses using lessons data
+  const lessons = await QuantumDB.getAllLessons();
+  let response = 'That is a great question! Try asking about superposition or entanglement.';
 
   if (question.toLowerCase().includes('superposition')) {
-    response = 'Superposition is the ability of a quantum system to be in multiple states at once.';
+    const l = lessons.find(x => x.title.toLowerCase().includes('superposition'));
+    response = l ? l.content : 'Superposition lets a qubit be in multiple states at once.';
   } else if (question.toLowerCase().includes('entanglement')) {
-    response = 'Entanglement is a connection between qubits where the state of one affects the other, instantly, no matter the distance.';
-  } else {
-    response = 'That is a great question! Let me get back to you on that.';
+    response = 'Entanglement is when two qubits are connected so the state of one affects the other.';
+  } else if (question.toLowerCase().includes('qubit')) {
+    const l = lessons.find(x => x.title.toLowerCase().includes('qubit'));
+    response = l ? l.content : 'A qubit is the basic unit of quantum information.';
   }
 
-  document.getElementById('ai-response').innerText = response;
+  responseEl.innerText = response;
+  await QuantumDB.saveQA(question, response);
 }

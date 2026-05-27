@@ -1,0 +1,28 @@
+{
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "title": "Introduction to Qubits",
+      "content": "A qubit is the basic unit of quantum information. Unlike a classical bit that is 0 or 1, a qubit can be in a superposition of both states.",
+      "quiz": [
+        {
+          "question": "What is a qubit?",
+          "options": ["A classical bit", "A unit of quantum information", "A type of electron"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "lesson-2",
+      "title": "Superposition & Measurement",
+      "content": "Superposition means a qubit can exist in multiple states at once. Measurement collapses the qubit to one of the basis states.",
+      "quiz": [
+        {
+          "question": "What happens when you measure a qubit in superposition?",
+          "options": ["It stays in superposition", "It becomes a classical bit 0 or 1", "It duplicates"],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

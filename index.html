@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum Learning Qubits App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <h1>Quantum Learning Qubits App</h1>
+  </header>
+  <main>
+    <section id="simulation">
+      <h2>Qubit Simulator</h2>
+      <p id="qubit-state">Qubit State: N/A</p>
+      <button onclick="simulateQubit()">Simulate Qubit</button>
+    </section>
+
+    <section id="ai-tutor">
+      <h2>AI Quantum Tutor</h2>
+      <input type="text" id="ai-question" placeholder="Ask the AI about quantum mechanics...">
+      <button onclick="askAIQuestion()">Ask AI</button>
+      <p id="ai-response">Response will appear here.</p>
+    </section>
+
+    <section id="lessons">
+      <h2>Lessons & Quizzes</h2>
+      <div id="lessons-list"></div>
+      <div id="quiz-area"></div>
+    </section>
+
+    <section id="data-sync">
+      <h2>Export / Import Progress</h2>
+      <button id="export-btn">Export Progress</button>
+      <input id="import-input" type="file" accept="application/json">
+    </section>
+
+  </main>
+
+  <script src="scripts/qubitSimulator.js"></script>
+  <script src="scripts/db.js"></script>
+  <script src="scripts/aiTutor.js"></script>
+  <script src="scripts/lessonsUI.js"></script>
+  <script src="scripts/sync.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
